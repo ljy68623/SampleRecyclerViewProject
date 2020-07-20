@@ -14,18 +14,19 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private MyAdapter myAdapter;
-    private ArrayList<String> names;
+    private ArrayList<ItemModel> itemList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        names = new ArrayList<String>();
+        itemList = new ArrayList<ItemModel>();
         for (int i = 0; i < 20; i++) {
-            names.add("Example name " + i);
+            ItemModel item = new ItemModel(i, "Example name " + i);
+            itemList.add(item);
         }
-        myAdapter = new MyAdapter(names);
+        myAdapter = new MyAdapter(itemList);
         recyclerView.setAdapter(myAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
